@@ -1,0 +1,37 @@
+
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card main-content">
+            <div class="header">
+
+                <h2>
+                    <span [hidden]="inedit">{{ pageData.pageName}}</span>
+                </h2>
+                <input type="text" [hidden]="!inedit" ng- [(ngModel)]="pageName"  value="{{pageData.pageName}}" /><br />
+            </div>
+            <div class="body table-responsive">
+                <label>Details:</label><br />
+                <span [hidden]="inedit">{{pageData.data}}</span>
+                <div *ngIf="inedit">
+                    <angular-editor [placeholder]="'Enter text here...'" ng- [(ngModel)]="htmlContent"></angular-editor>
+                    </div>
+                </div>
+            <div class="btnactions" [hidden]="inedit">
+                <button class="btn btn-info" (click)="editPage(Id)" data-toggle="modal" style="margin-left: 20px;margin-bottom: 20px;"
+                        data-target="#editModal">
+                    Edit
+                </button>
+            </div>
+            <div class="btnactions" [hidden]="!inedit" >
+                <button class="btn btn-info" (click)="onSaveClick(Id)" data-toggle="modal" style="margin-left: 20px;margin-bottom: 20px;"
+                        data-target="#editModal">
+                    Save
+                </button>
+                <button class="btn btn-info" (click)="onCancelClick(i)" data-toggle="modal" style="margin-left: 20px;margin-bottom: 20px;"
+                        data-target="#editModal">
+                    Cancel
+                </button>
+            </div>
+        </div>
+</div>
